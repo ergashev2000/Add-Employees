@@ -1,12 +1,5 @@
 {
   "employees": [
-    {
-      "fullName": "islom",
-      "email": "erags@gmail.com",
-      "level": "Junior",
-      "department": "Web development",
-      "phoneNumber": "9098890098",
-      "id": 2
-    }
+   
   ]
 }
