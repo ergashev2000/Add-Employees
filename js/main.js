@@ -4,7 +4,13 @@ let inputName = document.getElementById("inputName"),
   inputAddress = document.getElementById("inputAddress"),
   inputNumber = document.getElementById("inputNumber"),
   inputStartdate = document.getElementById("inputStartdate"),
-  
+
+  changeInputName = document.getElementById("changeInputName"),
+  changeInputEmail = document.getElementById("changeInputEmail"),
+  changeSelectDepartment = document.getElementById("changeSelectDepartment"),
+  changeInputNumber = document.getElementById("changeInputNumber"),
+  changeSelectLevel = document.getElementById("changeSelectLevel"),
+
   // Selectors
   inputDate = document.getElementById("inputDate"),
   departmentSelect = document.getElementById("departmentSelect"),
@@ -12,15 +18,18 @@ let inputName = document.getElementById("inputName"),
 
   // Buttons
   addSaveBtn = document.getElementById("addSaveBtn"),
-  changeSelectLevel = document.getElementById("changeSelectLevel"),
   btnEdit = document.querySelector('.btnEdit'),
-  btnDelete = document.querySelectorAllgit('.btnDelete'),
+  btnDelete = document.querySelector('.btnDelete'),
   addNew = document.querySelector('.addNew'),
 
-  // Others
-  tbody = document.querySelector(".tbody")
-  ;
+  changeSaveBtn = document.getElementById("changeSaveBtn"),
 
+  // Others
+  tbody = document.querySelector(".tbody"),
+  linkPrint  =document.querySelector(".linkPrint")
+  ;
+ 
+  
 
 let baseUrl = "http://localhost:3000";
 
@@ -39,27 +48,6 @@ getDataEmployees();
 
 
 
-// Render
-function renderData(getData) {
-    getData.forEach((el, i) => {
-      let cl = document.createElement("tr");
-      cl.innerHTML = `
-              <th scope="row">${i + 1}</th>
-              <td>${el.fullName}</td>
-              <td>${el.email}</td>
-              <td>${el.address}</td>
-              <td>${el.department}</td>
-              <td>${el.phoneNumber}</td>
-              <td class="d-flex">
-                  <button type="button" class="btn btn-info btn__edit btnEdit" data-bs-toggle="modal"
-                      data-bs-target="#exampleModal" id="${i}">
-                      Edit</button>
-                  <button class="btn btn-danger btn__edit btnDelete" id="${i}" >Delete</button>
-              </td>
-              `;
-              tbody.appendChild(cl);
-    });
-  }
 
 
 
@@ -104,6 +92,30 @@ addSaveBtn.addEventListener("click", () => {
       
     }
 });
+
+// Render
+
+function renderData(getData) {
+    getData.forEach((el, i) => {
+      let cl = document.createElement("tr");
+      cl.dataset.id = el.id;
+      cl.innerHTML = `
+              <th scope="row">${i + 1}</th>
+              <td>${el.fullName}</td>
+              <td>${el.email}</td>
+              <td>${el.level}</td>
+              <td>${el.department}</td>
+              <td>${el.phoneNumber}</td>
+              <td class="d-flex">
+                  <button type="button" class="btn btn-info btn__edit btnEdit" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal" id="${i}" data-edit="${el.id}">
+                      Edit</button>
+                  <button class="btn btn-danger btn__edit btnDelete" id="${i}" data-del="${el.id}">Delete</button>
+              </td>
+              `;
+              tbody.appendChild(cl);
+    });
+  }
 // ADD DATE FUNCTION
 function addDataEmployees(fullname,email,address,birthDate,phoneNumber,startdate,department,level) {
   try {
@@ -115,12 +127,12 @@ function addDataEmployees(fullname,email,address,birthDate,phoneNumber,startdate
       body: JSON.stringify({
         fullName: `${fullname}`,
         email: `${email}`,
+        level: `${level}`,
         address: `${address}`,
         birthDate: `${birthDate}`,
         phoneNumber: `${phoneNumber}`,
         startdate: `${startdate}`,
         department: `${department}`,
-        level: `${level}`,
       }),
     });
 
@@ -128,25 +140,64 @@ function addDataEmployees(fullname,email,address,birthDate,phoneNumber,startdate
     console.log(err);
   }
 }
-console.log(btnDelete);
 
 
 // Delete emplayees
-
-// function deleteDataEmployees(id) {
-//     try {
-//       fetch(`${baseUrl}/employees/${id}`, {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ }),
-//       });
+ function deleteDataEmployees(id) {
+    try {
+       fetch(`${baseUrl}/employees/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ }),
+      });
   
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
+    } catch (err) {
+      console.log(err);
+    }
+}
+
+
+function changeDataEmployees(id, fullname,email, chanlevel ,phoneNumber,department,) {
+  try {
+    fetch(`${baseUrl}/employees/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName: `${fullname}`,
+        email: `${email}`,
+        level: `${chanlevel}`,
+        department: `${department}`,
+        phoneNumber: `${phoneNumber}`
+        
+      }),
+    });
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+tbody.addEventListener('click', (e) => {
+  
+    if(e.target.classList.contains('btnDelete')){
+        deleteDataEmployees(e.target.getAttribute("data-del"))
+    }
+
+    if (e.target.classList.contains('btnEdit')) {
+
+      changeSaveBtn.addEventListener('click', () => {
+        changeDataEmployees(e.target.getAttribute("data-edit"), changeInputName.value, changeInputEmail.value, changeSelectLevel.value, changeInputNumber.value, changeSelectDepartment.value)
+      })
+    }
+})
 
 
 
+linkPrint.addEventListener('click', () => {
+  window.print()
+})

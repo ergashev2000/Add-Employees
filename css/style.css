@@ -97,3 +97,7 @@ th{
   outline: none;
   border: 1px solid transparent;
 }
+.linkPrint{
+  color: rgb(30, 30, 255);
+  cursor: pointer;
+}

@@ -1,15 +1,12 @@
 {
   "employees": [
     {
-      "fullName": "Islomjon Ergashev",
-      "email": "ergashevislomjon1020@gmail.com",
-      "address": "Fergana",
-      "birthDate": "2022-09-21",
-      "phoneNumber": "908575788",
-      "startdate": "2022-09-14",
-      "department": "Web development",
+      "fullName": "islom",
+      "email": "erags@gmail.com",
       "level": "Junior",
-      "id": 1
+      "department": "Web development",
+      "phoneNumber": "9098890098",
+      "id": 2
     }
   ]
 }

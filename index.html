@@ -34,7 +34,7 @@
             <div class="col-12">
                 <h2 class="text">Employees</h2>
                 <p class="text__decoretion">
-                    View the Print completion status and manage your list of employees. <a href="">Read more</a>
+                    View the Print completion status and manage your list of employees. <span class="linkPrint">Download the list of employees</span>
                 </p>
             </div>
             <div class="col-12">
@@ -52,7 +52,7 @@
                         <th scope="col">#</th>
                         <th scope="col">employees</th>
                         <th scope="col">work email</th>
-                        <th scope="col">address</th>
+                        <th scope="col">level</th>
                         <th scope="col">department</th>
                         <th scope="col">phone number</th>
                         <th scope="col">edit / delete</th>
@@ -70,7 +70,7 @@
                             <button type="button" class="btn btn-info btn__edit" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Edit</button>
-                            <button class="btn btn-danger btn__edit">Delete</button>
+                            <button class="btn btn-danger btn__edit btnDelete">Delete</button>
                         </td>
                     </tr> -->
 
@@ -98,20 +98,18 @@
                             </div>
 
                             <div class="col-12 ">
-                                <label for="changeInputAddress" class="col col-form-label">Address </label>
+                                <label for="validRegex" class="col col-form-label">Work Email </label>
                                 <div class="col">
-                                    <input type="text" class="form-control" id="changeInputAddress"
-                                        placeholder="Employee address">
+                                    <input type="text" class="form-control" id="changeInputEmail" placeholder="Employee email">
                                 </div>
                             </div>
 
                             <div class="col-12 ">
-                                <label for="changeSelectDepartment" class="col col-form-label">Department: </label>
+                                <label for="changeSelectDepartment" class="col col-form-label">Department </label>
                                 <div class="col">
                                     <select class="form-select form-select-lg mb-3 w-100 p-2"
                                         aria-label=".form-select-lg example" id="changeSelectDepartment">
-                                        <option selected disabled>Department</option>
-                                        <option value="Web development">Web development</option>
+                                        <option value="Web development" selected>Web development</option>
                                         <option value="Design">Design</option>
                                         <option value="Marketing">Marketing</option>
                                         <option value="Mobile development">Mobile development</option>
