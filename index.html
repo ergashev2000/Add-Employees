@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - add Employees </title>
+
+    <!-- Bootstrap style -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- Main style -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 pt-3">Admin > Employees</div>
+            <div class="col-6 pt-3 d-flex  add__btn ">
+                <button type="button" class="btn btn-light "><i class="fa-regular fa-envelope"></i> SEND
+                    REMINDERS</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" id="addNew" data-bs-target="#staticBackdrop">
+                    <i class="fa-solid fa-plus"></i> NEW EMPLOYEES
+                </button>
+                <!-- <button type="button" class="btn btn-success "><i class="fa-solid fa-plus"></i> NEW EMPLOYEES</button> -->
+            </div>
+            <div class="col-12">
+                <h2 class="text">Employees</h2>
+                <p class="text__decoretion">
+                    View the Print completion status and manage your list of employees. <a href="">Read more</a>
+                </p>
+            </div>
+            <div class="col-12">
+                <div class="input-group mb-3 w-50 float-right">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+                    <input type="text" class="form-control searchEmp" placeholder="Name,   email..."
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">employees</th>
+                        <th scope="col">work email</th>
+                        <th scope="col">address</th>
+                        <th scope="col">department</th>
+                        <th scope="col">phone number</th>
+                        <th scope="col">edit / delete</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <!-- <tr>
+                        <th scope="row">1</th>
+                        <td>Islomjon Ergashev</td>
+                        <td>Ergashevislomjon@gmail.com</td>
+                        <td>Fergana</td>
+                        <td>Web development</td>
+                        <td>Junior</td>
+                        <td class="d-flex">
+                            <button type="button" class="btn btn-info btn__edit" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Edit</button>
+                            <button class="btn btn-danger btn__edit">Delete</button>
+                        </td>
+                    </tr> -->
+
+                </tbody>
+            </table>
+
+            <!-- Change Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title change__title" id="exampleModalLabel">Change Employee
+                                Information</h5>
+                            <button type="button" class="btn-close myClose" data-bs-dismiss="modal"
+                                aria-label="Close"><i class="fa-sharp fa-solid fa-square-xmark"></i></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="col-12 ">
+                                <label for="changeInputName" class="col col-form-label">Fullname </label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="changeInputName" placeholder="John Doe">
+                                </div>
+                            </div>
+
+                            <div class="col-12 ">
+                                <label for="changeInputAddress" class="col col-form-label">Address </label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="changeInputAddress"
+                                        placeholder="Employee address">
+                                </div>
+                            </div>
+
+                            <div class="col-12 ">
+                                <label for="changeSelectDepartment" class="col col-form-label">Department: </label>
+                                <div class="col">
+                                    <select class="form-select form-select-lg mb-3 w-100 p-2"
+                                        aria-label=".form-select-lg example" id="changeSelectDepartment">
+                                        <option selected disabled>Department</option>
+                                        <option value="Web development">Web development</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Mobile development">Mobile development</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="changeSelectLevel" class="col col-form-label">Level </label>
+                                <div class="col">
+                                    <select class="form-select form-select-lg mb-3 w-100 p-2"
+                                        aria-label=".form-select-lg example" id="changeSelectLevel">
+                                        <option value="Junior" selected>Junior</option>
+                                        <option value="Middle">Middle</option>
+                                        <option value="Senior">Senior</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 ">
+                                <label for="changeInputNumber" class="col col-form-label">Phone numbers </label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="changeInputNumber"
+                                        placeholder="+998(90) 123-45-67">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="changeSaveBtn">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MODAL -->
+
+        </div>
+    </div>
+    <!-- END ROW -->
+
+    <!-- Button trigger modal -->
+
+
+    <!-- ADD  EMPLOTEES MODAL -->
+    <div class="modal fade 	" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title  fa-2x" id="staticBackdropLabel">Add New Employee</h5>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button> -->
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post">
+                        <div class="row main__form">
+                            <div class="col-6 ">
+                                <label for="inputName" class="col col-form-label">Fullname: </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="John Doe" required>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <label for="inputDate" class="col col-form-label">Birth date </label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="inputDate" required>
+                                </div>
+                            </div>
+
+                            <div class="col-6 ">
+                                <label for="inputAddress" class="col col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputAddress"
+                                        placeholder="Employee address" required>
+                                </div>
+                            </div>
+
+                            <div class="col-6 ">
+                                <label for="departmentSelect" class="col col-form-label">Department </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select form-select-lg mb-3 w-100 p-2"
+                                        aria-label=".form-select-lg example" id="departmentSelect" required>
+                                        <option value="Web development" selected>Web development</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Mobile development">Mobile development</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6 ">
+                                <label for="inputEmail" class="col col-form-label">Work email </label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <label for="inputStartdate" class="col col-form-label">Start date </label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="inputStartdate" required>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="levelSelect" class="col col-form-label">Level </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select form-select-lg mb-3 w-100 p-2"
+                                        aria-label=".form-select-lg example" id="levelSelect" required>
+                                        <option value="Junior" selected>Junior</option>
+                                        <option value="Middle">Middle</option>
+                                        <option value="Senior">Senior</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <label for="inputNumber" class="col col-form-label">Phone numbers </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputNumber"
+                                        placeholder="(90) 123-45-67" required >
+                                        <div id="validationServer03Feedback" class="invalid-feedback">
+                                            Please enter the correct phone format! 903334444
+                                          </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                            <button type="button" class="btn btn-primary"  id="addSaveBtn">SAVE</button>
+                            <!-- data-bs-dismiss="modal"     ===>    save bo'lganda oynani yopish uchun btn ga add-->
+                        </div>
+                    </form>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+        crossorigin="anonymous"></script>
+
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;800;900&display=swap);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+.container-fluid{
+    padding: 0 40px;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.row__header h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0;
+}
+.row__header {
+  background-color: aliceblue;
+}
+
+.text h3 {
+  font-size: 18px;
+  margin-bottom: 0;
+  padding: 5px 0;
+  text-align: center;
+  padding-top: 10px;
+}
+.text {
+  padding: 0;
+}
+.text > div {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+
+  overflow: hidden;
+  padding: 0 2px;
+}
+.btn__edit {
+  width:50%;
+  border-radius: 0;
+}
+.main__col {
+  padding: 0;
+}
+.add__btn > button {
+  font-size: 14px;
+  width: 200px;
+  margin-left: 50px;
+}
+.add__btn > button > i{
+    padding-right: 5px;
+    vertical-align: middle;
+}
+.input-group-text{
+    background-color: inherit;
+    border-right: 0;
+}
+.searchEmp{
+    border-left: 0;
+}
+.main__form{
+    padding-left: 70px;
+}
+.main__form > div{
+    padding-bottom: 20px;
+}
+.form-select{
+    border-color: #ced4da;
+    border-radius: 0.25rem;
+}
+.modal-footer{
+    justify-content: space-evenly;
+}
+.modal-footer > button{
+    width: 300px;
+}
+.modal-title{
+    text-align: center;
+}
+.myClose{
+  border: 0;
+  background-color: transparent;
+}
+.change__title{
+  font-size: 26px;
+  text-align: center;
+}
+
+th{
+  text-transform: uppercase;
+}
+.myClose:focus{
+  outline: none;
+  border: 1px solid transparent;
+}
