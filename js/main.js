@@ -14,7 +14,7 @@ let inputName = document.getElementById("inputName"),
   addSaveBtn = document.getElementById("addSaveBtn"),
   changeSelectLevel = document.getElementById("changeSelectLevel"),
   btnEdit = document.querySelector('.btnEdit'),
-  btnDelete = document.querySelectorAll('.btnDelete'),
+  btnDelete = document.querySelectorAllgit('.btnDelete'),
   addNew = document.querySelector('.addNew'),
 
   // Others
