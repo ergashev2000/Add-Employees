@@ -30,7 +30,6 @@ let inputName = document.getElementById("inputName"),
   ;
  
   
-
 let baseUrl = "http://localhost:3000";
 
 async function getDataEmployees() {
@@ -41,24 +40,18 @@ async function getDataEmployees() {
     },
   });
   const resultData = await response.json();
-
-      renderData(resultData);
+  renderData(resultData);
 }
 getDataEmployees();
 
 
-
-
-
-
+// Regex
 addSaveBtn.addEventListener("click", () => {
 
-    // Regex
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     let regux = /^998(9[012345789]|6[125679]|7[01234569])[0-9]{7}$/;
     let regux2 = /^(9[012345789]|6[125679]|7[01234569])[0-9]{7}$/;
-
 
     if (
         inputName.value.trim().length === 0 ||
@@ -71,7 +64,6 @@ addSaveBtn.addEventListener("click", () => {
         ) {
         alert("Ma'lumotni to'liq kiriting!!!")
       }else{
-
         if (!inputEmail.value.match(validRegex)) {
             inputEmail.classList.add('is-invalid')
         }else if ((inputNumber.value.match(regux) || inputNumber.value.match(regux2) )){
@@ -89,12 +81,11 @@ addSaveBtn.addEventListener("click", () => {
             inputEmail.classList.remove('is-invalid')
             inputNumber.classList.add('is-invalid')
         }
-      
     }
 });
 
-// Render
 
+// Render
 function renderData(getData) {
     getData.forEach((el, i) => {
       let cl = document.createElement("tr");
@@ -116,6 +107,8 @@ function renderData(getData) {
               tbody.appendChild(cl);
     });
   }
+
+
 // ADD DATE FUNCTION
 function addDataEmployees(fullname,email,address,birthDate,phoneNumber,startdate,department,level) {
   try {
@@ -135,7 +128,6 @@ function addDataEmployees(fullname,email,address,birthDate,phoneNumber,startdate
         department: `${department}`,
       }),
     });
-
   } catch (err) {
     console.log(err);
   }
@@ -152,13 +144,13 @@ function addDataEmployees(fullname,email,address,birthDate,phoneNumber,startdate
         },
         body: JSON.stringify({ }),
       });
-  
     } catch (err) {
       console.log(err);
     }
 }
 
 
+// Change date
 function changeDataEmployees(id, fullname,email, chanlevel ,phoneNumber,department,) {
   try {
     fetch(`${baseUrl}/employees/${id}`, {
@@ -183,13 +175,10 @@ function changeDataEmployees(id, fullname,email, chanlevel ,phoneNumber,departme
 
 
 tbody.addEventListener('click', (e) => {
-  
     if(e.target.classList.contains('btnDelete')){
         deleteDataEmployees(e.target.getAttribute("data-del"))
     }
-
     if (e.target.classList.contains('btnEdit')) {
-
       changeSaveBtn.addEventListener('click', () => {
         changeDataEmployees(e.target.getAttribute("data-edit"), changeInputName.value, changeInputEmail.value, changeSelectLevel.value, changeInputNumber.value, changeSelectDepartment.value)
       })
@@ -197,7 +186,7 @@ tbody.addEventListener('click', (e) => {
 })
 
 
-
+// Print paper
 linkPrint.addEventListener('click', () => {
   window.print()
 })
